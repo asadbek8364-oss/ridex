@@ -1,56 +1,50 @@
 <div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/ridex)
-  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/ridex?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/ridex?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-  [![YouTube Video Views](https://img.shields.io/youtube/views/DJAK-KODM5E?style=social)](https://youtu.be/DJAK-KODM5E)
 
-  <br />
-  <br />
-  
-  <img src="./readme-images/project-logo.png" />
+  <h2 align="center">Ridex Taxi — аренда авто для такси</h2>
 
-  <h2 align="center">Ridex - Car rent website</h2>
-
-  Ridex is fully responsive car rental website, <br />Responsive for all devices, built using HTML, CSS, and JavaScript.
-
-  <a href="https://codewithsadee.github.io/ridex/"><strong>➥ Live Demo</strong></a>
+  Сайт таксопарка: аренда автомобилей для работы в такси в <b>Оше</b>, <b>Ташкенте</b> и <b>Бишкеке</b>.<br />
+  Адаптивный, без сборки и сервера: HTML, CSS и JavaScript.
 
 </div>
 
 <br />
 
-### Demo Screeshots
+![Ridex Taxi — главный экран](./readme-images/desktop.png "Главный экран")
 
-![Ridex Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+### Что есть на сайте
 
-### Prerequisites
+* **Выбор города** (Ош / Ташкент / Бишкек). От города зависят автопарк, цены и валюта (сом или сум), залог, телефон, WhatsApp, Telegram и адрес офиса. Выбор запоминается в браузере, а ссылка вида `?city=tashkent` сразу открывает нужный город.
+* **Автопарк** с фильтром по классу: эконом, комфорт, гибрид и электро. Карточки строятся из данных, силуэты машин — SVG, поэтому фотографии не нужны.
+* **Форматы аренды**: посуточно, неделя или месяц со скидкой, аренда с выкупом.
+* **Калькулятор дохода**: машина, формат аренды, рабочие дни, доход за смену и топливо → сколько остаётся водителю за месяц.
+* **Что входит в аренду**, **4 шага до выхода на линию**, **требования и документы**, **офисы**, **частые вопросы**.
+* **Заявка**: форма проверяет поля и открывает WhatsApp менеджера выбранного города с готовым сообщением. Бэкенд не нужен.
+* Плавающая кнопка WhatsApp, мобильное меню, доступность с клавиатуры.
 
-Before you begin, ensure you have met the following requirements:
+### Как поменять цены, машины и контакты
 
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+Все данные лежат в одном файле — [`assets/js/data.js`](./assets/js/data.js):
 
-### Run Locally
+* `cities` — для каждого города: телефон, номер WhatsApp (только цифры), Telegram, адрес, часы работы, залог, валюта, стартовые значения калькулятора и расход топлива за смену.
+* `cars` — автопарк. `prices` — цена за сутки по городам. Если города нет в `prices`, машина там не показывается. `body` — силуэт (`sedan` или `hatch`), `color` — цвет кузова.
+* `formats` — скидки за неделю и месяц.
 
-To run **Ridex** locally, run this command on your git bash:
+> ⚠️ Телефоны, адреса и цены в `data.js` — **примерные**. Перед публикацией замените их на реальные.
+> Ссылку на Instagram нужно указать в футере файла `index.html`.
 
-Linux and macOS:
+### Запуск
+
+Откройте `index.html` в браузере или запустите локальный сервер:
 
 ```bash
-sudo git clone https://github.com/codewithsadee/ridex.git
+git clone https://github.com/asadbek8364-oss/ridex.git
+cd ridex
+python3 -m http.server 8000
+# открыть http://localhost:8000
 ```
 
-Windows:
+Для публикации подойдёт GitHub Pages: *Settings → Pages → Deploy from a branch*.
 
-```bash
-git clone https://github.com/codewithsadee/ridex.git
-```
+### Благодарности
 
-### Contact
-
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
-
-### License
-
-This project is **free to use** and does not contains any license.
+Сайт сделан на основе бесплатного шаблона [Ridex](https://github.com/codewithsadee/ridex) от codewithsadee.
