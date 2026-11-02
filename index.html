@@ -1,34 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ridex - Rent your favourite car</title>
+  <title>Ridex Taxi — аренда авто для такси в Оше, Ташкенте и Бишкеке</title>
+  <meta name="description"
+    content="Аренда автомобилей для работы в такси в Оше, Ташкенте и Бишкеке. Машины на газе и гибриды, страховка и ТО включены, подключение к Яндекс Go и inDrive. Посуточно, на месяц или с выкупом.">
+  <meta name="theme-color" content="#ffc61a">
 
-  <!-- 
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ridex Taxi — аренда авто для такси">
+  <meta property="og:description" content="Ош · Ташкент · Бишкек. Посуточно, на месяц или с выкупом. Страховка и ТО включены.">
+  <meta property="og:locale" content="ru_RU">
+
+  <!--
     - favicon
   -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-  <!-- 
+  <!--
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- 
+  <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- 
+  <a href="#main" class="skip-link">Перейти к содержимому</a>
+
+  <!--
+    - SVG sprite: силуэты автомобилей для карточек и иллюстрации
+  -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+
+      <symbol id="wheel" viewBox="-27 -27 54 54">
+        <circle r="27" fill="#1d2129" />
+        <circle r="17" fill="#c9ced6" />
+        <circle r="17" fill="none" stroke="#9aa1ac" stroke-width="2" />
+        <path d="M0-15V-8M0 8v7M-15 0h7M8 0h7" stroke="#8a919c" stroke-width="3" stroke-linecap="round" />
+        <circle r="6" fill="#6b7280" />
+      </symbol>
+
+      <symbol id="taxi-sign" viewBox="0 0 48 16">
+        <path d="M2 15 6 3.5Q7 1 10 1h28q3 0 4 2.5L46 15Z" fill="#ffc61a" stroke="#1b1f27" stroke-width="1.6" />
+        <text x="24" y="12" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9.5"
+          font-weight="700" fill="#1b1f27">TAXI</text>
+      </symbol>
+
+      <symbol id="car-sedan" viewBox="0 0 400 160">
+        <ellipse cx="203" cy="150" rx="180" ry="7" fill="#000" opacity=".14" />
+        <use href="#taxi-sign" x="183" y="26" width="48" height="16" />
+        <path fill="var(--car-color, #ffc61a)"
+          d="M22 118 24 96Q26 84 42 82L112 76Q140 50 168 42L238 40Q252 40 262 48L296 74Q340 78 366 86Q380 90 382 102L384 118Q384 124 376 124H334A29 29 0 0 0 276 124H124A29 29 0 0 0 66 124H30Q22 124 22 118Z" />
+        <path fill="#000" opacity=".12"
+          d="M23 106 383 108 384 118Q384 124 376 124H334A29 29 0 0 0 276 124H124A29 29 0 0 0 66 124H30Q22 124 22 118Z" />
+        <path d="M44 88 364 92" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none" />
+        <path fill="var(--glass, #2a3443)" d="M122 75Q144 55 170 47L202 46V75Z" />
+        <path fill="var(--glass, #2a3443)" d="M210 46H236Q247 46 254 52L283 74 210 75Z" />
+        <path fill="#fff" opacity=".16" d="M224 49h10l-20 24h-9Z" />
+        <g stroke="#000" stroke-opacity=".25" stroke-width="1.5" fill="none">
+          <path d="M132 78Q128 100 134 118" />
+          <path d="M206 46V118" />
+          <path d="M274 76 270 116" />
+        </g>
+        <rect x="180" y="86" width="14" height="3.5" rx="1.75" fill="#000" opacity=".3" />
+        <rect x="246" y="86" width="14" height="3.5" rx="1.75" fill="#000" opacity=".3" />
+        <path d="M268 70q6-6 14-2v6q-8 2-14 0Z" fill="var(--car-color, #ffc61a)" stroke="#000" stroke-opacity=".25" />
+        <path d="M364 90q12 2 16 10l-14-1q-4-4-2-9Z" fill="#fff3c4" stroke="#000" stroke-opacity=".2" />
+        <path d="M24 92q2-6 12-7l2 8-14 2Z" fill="#d63b3b" />
+        <use href="#wheel" x="70" y="100" width="50" height="50" />
+        <use href="#wheel" x="280" y="100" width="50" height="50" />
+      </symbol>
+
+      <symbol id="car-hatch" viewBox="0 0 400 160">
+        <ellipse cx="203" cy="150" rx="176" ry="7" fill="#000" opacity=".14" />
+        <use href="#taxi-sign" x="128" y="22" width="48" height="16" />
+        <path fill="var(--car-color, #ffc61a)"
+          d="M28 118 30 96Q30 70 48 54Q60 42 84 39L206 36Q222 36 236 45L292 76Q336 80 360 88Q374 92 376 104L378 118Q378 124 370 124H329A29 29 0 0 0 271 124H129A29 29 0 0 0 71 124H36Q28 124 28 118Z" />
+        <path fill="#000" opacity=".12"
+          d="M29 106 377 108 378 118Q378 124 370 124H329A29 29 0 0 0 271 124H129A29 29 0 0 0 71 124H36Q28 124 28 118Z" />
+        <path d="M40 86 358 92" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none" />
+        <path fill="var(--glass, #2a3443)" d="M52 72Q56 54 74 47Q84 44 96 44L132 43 134 73Z" />
+        <path fill="var(--glass, #2a3443)" d="M142 43 196 42V73H142Z" />
+        <path fill="var(--glass, #2a3443)" d="M204 42H210Q224 42 232 48L280 75 204 74Z" />
+        <path fill="#fff" opacity=".16" d="M218 45h10l-22 27h-2v-6Z" />
+        <g stroke="#000" stroke-opacity=".25" stroke-width="1.5" fill="none">
+          <path d="M138 44Q135 90 140 118" />
+          <path d="M200 42V118" />
+          <path d="M268 74 266 116" />
+        </g>
+        <rect x="176" y="86" width="14" height="3.5" rx="1.75" fill="#000" opacity=".3" />
+        <rect x="240" y="86" width="14" height="3.5" rx="1.75" fill="#000" opacity=".3" />
+        <path d="M262 70q6-6 14-2v6q-8 2-14 0Z" fill="var(--car-color, #ffc61a)" stroke="#000" stroke-opacity=".25" />
+        <path d="M356 90q12 2 16 10l-14-1q-4-4-2-9Z" fill="#fff3c4" stroke="#000" stroke-opacity=".2" />
+        <path d="M31 90q1-14 5-20l6 2-2 20Z" fill="#d63b3b" />
+        <use href="#wheel" x="75" y="100" width="50" height="50" />
+        <use href="#wheel" x="275" y="100" width="50" height="50" />
+      </symbol>
+
+    </defs>
+  </svg>
+
+
+
+
+
+  <!--
     - #HEADER
   -->
 
@@ -37,51 +126,67 @@
 
       <div class="overlay" data-overlay></div>
 
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" alt="Ridex logo">
+      <a href="#home" class="logo" aria-label="Ridex Taxi — на главную">
+        <img src="./assets/images/logo-icon.svg" alt="" width="36" height="36">
+        <span class="logo-text">Ridex<span>taxi</span></span>
       </a>
 
-      <nav class="navbar" data-navbar>
+      <nav class="navbar" data-navbar aria-label="Основное меню">
         <ul class="navbar-list">
 
           <li>
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            <a href="#fleet" class="navbar-link" data-nav-link>Автопарк</a>
           </li>
 
           <li>
-            <a href="#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
+            <a href="#tariffs" class="navbar-link" data-nav-link>Условия</a>
           </li>
 
           <li>
-            <a href="#" class="navbar-link" data-nav-link>About us</a>
+            <a href="#calculator" class="navbar-link" data-nav-link>Калькулятор</a>
           </li>
 
           <li>
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+            <a href="#faq" class="navbar-link" data-nav-link>Вопросы</a>
+          </li>
+
+          <li>
+            <a href="#contacts" class="navbar-link" data-nav-link>Контакты</a>
           </li>
 
         </ul>
+
+        <div class="navbar-contact">
+          <a href="#" class="contact-link" data-city-phone></a>
+          <span class="contact-time" data-city-hours></span>
+          <a href="#booking" class="btn btn-primary" data-nav-link>Оставить заявку</a>
+        </div>
       </nav>
 
       <div class="header-actions">
 
-        <div class="header-contact">
-          <a href="tel:88002345678" class="contact-link">8 800 234 56 78</a>
+        <label class="city-select">
+          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+          <span class="visually-hidden">Ваш город</span>
+          <select data-city-select aria-label="Ваш город">
+            <option value="osh">Ош</option>
+            <option value="tashkent">Ташкент</option>
+            <option value="bishkek">Бишкек</option>
+          </select>
+          <ion-icon name="chevron-down-outline" class="select-chevron" aria-hidden="true"></ion-icon>
+        </label>
 
-          <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+        <div class="header-contact">
+          <a href="#" class="contact-link" data-city-phone></a>
+          <span class="contact-time" data-city-hours></span>
         </div>
 
-        <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-          <ion-icon name="car-outline"></ion-icon>
-
-          <span id="aria-label-txt">Explore cars</span>
+        <a href="#booking" class="btn btn-primary header-cta">
+          <ion-icon name="car-outline" aria-hidden="true"></ion-icon>
+          <span>Оставить заявку</span>
         </a>
 
-        <a href="#" class="btn user-btn" aria-label="Profile">
-          <ion-icon name="person-outline"></ion-icon>
-        </a>
-
-        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Открыть меню" aria-expanded="false">
           <span class="one"></span>
           <span class="two"></span>
           <span class="three"></span>
@@ -96,10 +201,10 @@
 
 
 
-  <main>
+  <main id="main">
     <article>
 
-      <!-- 
+      <!--
         - #HERO
       -->
 
@@ -107,39 +212,125 @@
         <div class="container">
 
           <div class="hero-content">
-            <h2 class="h1 hero-title">The easy way to takeover a lease</h2>
+
+            <p class="eyebrow">
+              <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+              Ош · Ташкент · Бишкек
+            </p>
+
+            <h1 class="h1 hero-title">Аренда авто для работы <mark>в&nbsp;такси</mark></h1>
 
             <p class="hero-text">
-              Live in New York, New Jerset and Connecticut!
+              Машины на газе и гибриды с полной страховкой. ТО и ремонт — за счёт парка.
+              Поможем подключиться к Яндекс Go и inDrive — выходите на линию в день обращения.
             </p>
+
+            <div class="city-tabs" role="group" aria-label="Выберите город">
+              <span class="city-tabs-label">Ваш город:</span>
+              <button type="button" class="city-tab" data-city-tab="osh" aria-pressed="false">Ош</button>
+              <button type="button" class="city-tab" data-city-tab="tashkent" aria-pressed="false">Ташкент</button>
+              <button type="button" class="city-tab" data-city-tab="bishkek" aria-pressed="false">Бишкек</button>
+            </div>
+
+            <form class="hero-form" data-hero-form>
+
+              <div class="input-wrapper">
+                <label for="hero-class" class="input-label">Класс авто</label>
+                <select name="class" id="hero-class" class="input-field">
+                  <option value="all">Любой</option>
+                  <option value="econom">Эконом</option>
+                  <option value="comfort">Комфорт</option>
+                  <option value="eco">Гибрид и электро</option>
+                </select>
+              </div>
+
+              <div class="input-wrapper">
+                <label for="hero-format" class="input-label">Формат аренды</label>
+                <select name="format" id="hero-format" class="input-field">
+                  <option value="day">Посуточно</option>
+                  <option value="week">На неделю (−5%)</option>
+                  <option value="month">На месяц (−10%)</option>
+                  <option value="buyout">С выкупом</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                <span>Подобрать авто</span>
+              </button>
+
+            </form>
+
+            <ul class="hero-stats">
+              <li>
+                <strong data-city-car-count>—</strong>
+                <span><span data-city-car-word>моделей</span> <span data-city-name-in>в городе</span></span>
+              </li>
+              <li>
+                <strong data-city-min-price>—</strong>
+                <span>минимальная цена за сутки</span>
+              </li>
+              <li>
+                <strong>24/7</strong>
+                <span>поддержка водителей</span>
+              </li>
+            </ul>
+
           </div>
 
-          <div class="hero-banner"></div>
+          <figure class="hero-banner">
+            <svg class="hero-art" viewBox="0 0 560 480" role="img"
+              aria-label="Жёлтое такси на фоне гор и города">
+              <defs>
+                <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffe7a1" />
+                  <stop offset="1" stop-color="#fff8e6" />
+                </linearGradient>
+              </defs>
+              <rect width="560" height="480" fill="url(#hero-sky)" />
+              <circle cx="420" cy="118" r="56" fill="#ffc61a" opacity=".85" />
+              <path fill="#d5dbe6"
+                d="M0 300 70 220l50 40 70-90 60 70 70-90 80 100 60-50 100 70v210H0Z" />
+              <path fill="#fff" d="M190 170l-15 19 10-3 8 7 10-7 9 2ZM320 150l-16 20 11-3 7 8 9-8 10 3Z" />
+              <path fill="#bfc7d4" d="M0 330 90 270l70 40 80-60 90 70 90-50 140 60v150H0Z" />
+              <g fill="#5c6678" opacity=".55">
+                <rect x="24" y="300" width="34" height="60" />
+                <rect x="62" y="280" width="26" height="80" />
+                <rect x="92" y="310" width="40" height="50" />
+                <rect x="136" y="268" width="22" height="92" />
+                <rect x="162" y="296" width="44" height="64" />
+                <path d="M228 360v-40q0-30 30-32 30 2 30 32v40Z" />
+                <rect x="255" y="276" width="6" height="14" />
+                <rect x="298" y="262" width="10" height="98" />
+                <path d="M296 262h14l-7-14Z" />
+                <rect x="318" y="292" width="38" height="68" />
+                <rect x="362" y="306" width="28" height="54" />
+                <rect x="396" y="284" width="46" height="76" />
+                <rect x="448" y="312" width="30" height="48" />
+                <rect x="484" y="292" width="40" height="68" />
+                <rect x="528" y="318" width="32" height="42" />
+              </g>
+              <rect y="352" width="560" height="12" fill="#a9b2c0" />
+              <rect y="364" width="560" height="116" fill="#272d38" />
+              <path d="M0 444h560" stroke="#ffd84d" stroke-width="5" stroke-dasharray="30 22" />
+              <use href="#car-sedan" x="56" y="242" width="448" height="179" style="--car-color: #ffc61a" />
+            </svg>
 
-          <form action="" class="hero-form">
-
-            <div class="input-wrapper">
-              <label for="input-1" class="input-label">Car, model, or brand</label>
-
-              <input type="text" name="car-model" id="input-1" class="input-field"
-                placeholder="What car are you looking?">
-            </div>
-
-            <div class="input-wrapper">
-              <label for="input-2" class="input-label">Max. monthly payment</label>
-
-              <input type="text" name="monthly-pay" id="input-2" class="input-field" placeholder="Add an amount in $">
-            </div>
-
-            <div class="input-wrapper">
-              <label for="input-3" class="input-label">Make Year</label>
-
-              <input type="text" name="year" id="input-3" class="input-field" placeholder="Add a minimal make year">
-            </div>
-
-            <button type="submit" class="btn">Search</button>
-
-          </form>
+            <figcaption class="hero-chips">
+              <span class="chip chip-1">
+                <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
+                Страховка включена
+              </span>
+              <span class="chip chip-2">
+                <ion-icon name="flame-outline" aria-hidden="true"></ion-icon>
+                Метан и пропан
+              </span>
+              <span class="chip chip-3">
+                <ion-icon name="phone-portrait-outline" aria-hidden="true"></ion-icon>
+                Яндекс Go · inDrive
+              </span>
+            </figcaption>
+          </figure>
 
         </div>
       </section>
@@ -148,412 +339,132 @@
 
 
 
-      <!-- 
-        - #FEATURED CAR
+      <!--
+        - #FLEET
       -->
 
-      <section class="section featured-car" id="featured-car">
+      <section class="section fleet" id="fleet" aria-labelledby="fleet-title">
         <div class="container">
 
           <div class="title-wrapper">
-            <h2 class="h2 section-title">Featured cars</h2>
+            <div>
+              <h2 class="h2 section-title" id="fleet-title">Автопарк <span data-city-name-in>в городе</span></h2>
+              <p class="section-text">Все машины застрахованы, прошли ТО и готовы к работе в такси.</p>
+            </div>
 
-            <a href="#" class="featured-car-link">
-              <span>View more</span>
-
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </a>
+            <p class="fleet-count" data-fleet-count aria-live="polite"></p>
           </div>
 
-          <ul class="featured-car-list">
+          <div class="filter-tabs" role="group" aria-label="Фильтр по классу авто" data-filter-tabs>
+            <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">
+              Все <span class="filter-count" data-filter-count="all"></span>
+            </button>
+            <button type="button" class="filter-tab" data-filter="econom" aria-pressed="false">
+              Эконом <span class="filter-count" data-filter-count="econom"></span>
+            </button>
+            <button type="button" class="filter-tab" data-filter="comfort" aria-pressed="false">
+              Комфорт <span class="filter-count" data-filter-count="comfort"></span>
+            </button>
+            <button type="button" class="filter-tab" data-filter="eco" aria-pressed="false">
+              Гибрид и электро <span class="filter-count" data-filter-count="eco"></span>
+            </button>
+          </div>
+
+          <ul class="fleet-list" data-fleet-list></ul>
+
+          <div class="fleet-empty" data-fleet-empty hidden>
+            <ion-icon name="car-outline" aria-hidden="true"></ion-icon>
+            <p>В этом городе сейчас нет машин такого класса.</p>
+            <button type="button" class="btn btn-secondary" data-filter-reset>Показать все машины</button>
+          </div>
+
+          <noscript>
+            <p class="fleet-empty">Чтобы увидеть автопарк и цены, включите JavaScript в браузере
+              или позвоните нам.</p>
+          </noscript>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #TARIFFS
+      -->
+
+      <section class="section tariffs" id="tariffs" aria-labelledby="tariffs-title">
+        <div class="container">
+
+          <h2 class="h2 section-title" id="tariffs-title">Форматы аренды</h2>
+          <p class="section-text">Выберите удобный вариант — условия можно поменять в любой момент.</p>
+
+          <ul class="tariff-list">
 
             <li>
-              <div class="featured-car-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/car-1.jpg" alt="Toyota RAV4 2021" loading="lazy" width="440" height="300"
-                    class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">Toyota RAV4</a>
-                    </h3>
-
-                    <data class="year" value="2021">2021</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Hybrid</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">6.1km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$440</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
+              <div class="tariff-card">
+                <div class="card-icon">
+                  <ion-icon name="today-outline" aria-hidden="true"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Посуточно</h3>
+
+                <p class="tariff-price">от <strong data-city-min-price>—</strong> <span>/ сутки</span></p>
+
+                <ul class="tariff-features">
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Оплата каждый день</li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon>
+                    <span>Залог <span data-city-deposit>—</span></span></li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Без долгих обязательств</li>
+                </ul>
+
+                <button type="button" class="btn btn-secondary" data-choose-format="day">Выбрать</button>
               </div>
             </li>
 
             <li>
-              <div class="featured-car-card">
+              <div class="tariff-card is-featured">
+                <span class="tariff-badge">Выгодно</span>
 
-                <figure class="card-banner">
-                  <img src="./assets/images/car-2.jpg" alt="BMW 3 Series 2019" loading="lazy" width="440" height="300"
-                    class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">BMW 3 Series</a>
-                    </h3>
-
-                    <data class="year" value="2019">2019</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Gasoline</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">8.2km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$350</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
+                <div class="card-icon">
+                  <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
                 </div>
 
+                <h3 class="h3 card-title">Неделя или месяц</h3>
+
+                <p class="tariff-price"><strong>−5% / −10%</strong> <span>к цене суток</span></p>
+
+                <ul class="tariff-features">
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Скидка 5% за неделю, 10% за
+                    месяц</li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Машина закреплена за вами</li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Подменное авто без очереди</li>
+                </ul>
+
+                <button type="button" class="btn btn-primary" data-choose-format="month">Выбрать</button>
               </div>
             </li>
 
             <li>
-              <div class="featured-car-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/car-3.jpg" alt="Volkswagen T-Cross 2020" loading="lazy" width="440"
-                    height="300" class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">Volkswagen T-Cross</a>
-                    </h3>
-
-                    <data class="year" value="2020">2020</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Gasoline</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">5.3km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$400</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
+              <div class="tariff-card">
+                <div class="card-icon">
+                  <ion-icon name="key-outline" aria-hidden="true"></ion-icon>
                 </div>
 
-              </div>
-            </li>
-
-            <li>
-              <div class="featured-car-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/car-4.jpg" alt="Cadillac Escalade 2020" loading="lazy" width="440"
-                    height="300" class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">Cadillac Escalade</a>
-                    </h3>
-
-                    <data class="year" value="2020">2020</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Gasoline</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">7.7km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$620</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="featured-car-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/car-5.jpg" alt="BMW 4 Series GTI 2021" loading="lazy" width="440"
-                    height="300" class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">BMW 4 Series GTI</a>
-                    </h3>
-
-                    <data class="year" value="2021">2021</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Gasoline</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">7.6km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$530</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="featured-car-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/car-6.jpg" alt="BMW 4 Series 2019" loading="lazy" width="440" height="300"
-                    class="w-100">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="card-title-wrapper">
-                    <h3 class="h3 card-title">
-                      <a href="#">BMW 4 Series</a>
-                    </h3>
-
-                    <data class="year" value="2019">2019</data>
-                  </div>
-
-                  <ul class="card-list">
-
-                    <li class="card-list-item">
-                      <ion-icon name="people-outline"></ion-icon>
-
-                      <span class="card-item-text">4 People</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="flash-outline"></ion-icon>
-
-                      <span class="card-item-text">Gasoline</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="speedometer-outline"></ion-icon>
-
-                      <span class="card-item-text">7.2km / 1-litre</span>
-                    </li>
-
-                    <li class="card-list-item">
-                      <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                      <span class="card-item-text">Automatic</span>
-                    </li>
-
-                  </ul>
-
-                  <div class="card-price-wrapper">
-
-                    <p class="card-price">
-                      <strong>$490</strong> / month
-                    </p>
-
-                    <button class="btn fav-btn" aria-label="Add to favourite list">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn">Rent now</button>
-
-                  </div>
-
-                </div>
-
+                <h3 class="h3 card-title">Аренда с выкупом</h3>
+
+                <p class="tariff-price"><strong>24–36</strong> <span>месяцев</span></p>
+
+                <ul class="tariff-features">
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Ежедневный платёж, как при
+                    аренде</li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Машина ваша после последнего
+                    платежа</li>
+                  <li><ion-icon name="checkmark-outline" aria-hidden="true"></ion-icon> Условия — индивидуально</li>
+                </ul>
+
+                <button type="button" class="btn btn-secondary" data-choose-format="buyout">Обсудить выкуп</button>
               </div>
             </li>
 
@@ -566,82 +477,64 @@
 
 
 
-      <!-- 
-        - #GET START
+      <!--
+        - #BENEFITS
       -->
 
-      <section class="section get-start">
+      <section class="section benefits" id="benefits" aria-labelledby="benefits-title">
         <div class="container">
 
-          <h2 class="h2 section-title">Get started with 4 simple steps</h2>
+          <h2 class="h2 section-title" id="benefits-title">Что входит в аренду</h2>
 
-          <ul class="get-start-list">
+          <ul class="benefit-list">
 
-            <li>
-              <div class="get-start-card">
-
-                <div class="card-icon icon-1">
-                  <ion-icon name="person-add-outline"></ion-icon>
-                </div>
-
-                <h3 class="card-title">Create a profile</h3>
-
-                <p class="card-text">
-                  If you are going to use a passage of Lorem Ipsum, you need to be sure.
-                </p>
-
-                <a href="#" class="card-link">Get started</a>
-
+            <li class="benefit-card">
+              <div class="card-icon icon-1">
+                <ion-icon name="shield-checkmark-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Страховка</h3>
+              <p class="card-text">ОСАГО на все машины уже включено в стоимость аренды.</p>
             </li>
 
-            <li>
-              <div class="get-start-card">
-
-                <div class="card-icon icon-2">
-                  <ion-icon name="car-outline"></ion-icon>
-                </div>
-
-                <h3 class="card-title">Tell us what car you want</h3>
-
-                <p class="card-text">
-                  Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-                </p>
-
+            <li class="benefit-card">
+              <div class="card-icon icon-2">
+                <ion-icon name="construct-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">ТО и ремонт</h3>
+              <p class="card-text">Плановое обслуживание и ремонт — за счёт парка. Вы не платите за запчасти.</p>
             </li>
 
-            <li>
-              <div class="get-start-card">
-
-                <div class="card-icon icon-3">
-                  <ion-icon name="person-outline"></ion-icon>
-                </div>
-
-                <h3 class="card-title">Match with seller</h3>
-
-                <p class="card-text">
-                  It to make a type specimen book. It has survived not only five centuries, but also the leap into
-                  electronic
-                </p>
-
+            <li class="benefit-card">
+              <div class="card-icon icon-3">
+                <ion-icon name="flame-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Газ на борту</h3>
+              <p class="card-text">Большинство машин на метане или пропане — топливо обходится заметно дешевле
+                бензина.</p>
             </li>
 
-            <li>
-              <div class="get-start-card">
-
-                <div class="card-icon icon-4">
-                  <ion-icon name="card-outline"></ion-icon>
-                </div>
-
-                <h3 class="card-title">Make a deal</h3>
-
-                <p class="card-text">
-                  There are many variations of passages of Lorem available, but the majority have suffered alteration
-                </p>
-
+            <li class="benefit-card">
+              <div class="card-icon icon-4">
+                <ion-icon name="phone-portrait-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Подключение к сервисам</h3>
+              <p class="card-text">Поможем зарегистрироваться в Яндекс Go, inDrive и других сервисах такси.</p>
+            </li>
+
+            <li class="benefit-card">
+              <div class="card-icon icon-5">
+                <ion-icon name="swap-horizontal-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <h3 class="card-title">Подменный автомобиль</h3>
+              <p class="card-text">Если машина в ремонте, выдадим другую — вы не теряете смены.</p>
+            </li>
+
+            <li class="benefit-card">
+              <div class="card-icon icon-6">
+                <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <h3 class="card-title">Поддержка 24/7</h3>
+              <p class="card-text">Диспетчер на связи круглосуточно: ДТП, эвакуатор, любые вопросы по машине.</p>
             </li>
 
           </ul>
@@ -653,223 +546,436 @@
 
 
 
-      <!-- 
-        - #BLOG
+      <!--
+        - #CALCULATOR
       -->
 
-      <section class="section blog" id="blog">
+      <section class="section calculator" id="calculator" aria-labelledby="calc-title">
+        <div class="checker" aria-hidden="true"></div>
+
         <div class="container">
 
-          <h2 class="h2 section-title">Our Blog</h2>
+          <h2 class="h2 section-title" id="calc-title">Сколько можно заработать</h2>
+          <p class="section-text">Примерный расчёт дохода за месяц <span data-city-name-in>в городе</span>.
+            Подставьте свои цифры.</p>
 
-          <ul class="blog-list has-scrollbar">
+          <div class="calc-grid">
 
-            <li>
-              <div class="blog-card">
+            <form class="calc-form" data-calc>
 
-                <figure class="card-banner">
-
-                  <a href="#">
-                    <img src="./assets/images/blog-1.jpg" alt="Opening of new offices of the company" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Company</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Opening of new offices of the company</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
+              <div class="field">
+                <label for="calc-car" class="field-label">Автомобиль</label>
+                <div class="select-wrap">
+                  <select id="calc-car" name="car" class="field-input" data-calc-car></select>
                 </div>
-
               </div>
+
+              <div class="field">
+                <label for="calc-format" class="field-label">Формат аренды</label>
+                <div class="select-wrap">
+                  <select id="calc-format" name="format" class="field-input" data-calc-format>
+                    <option value="day">Посуточно</option>
+                    <option value="week">На неделю (−5%)</option>
+                    <option value="month">На месяц (−10%)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="field-row">
+                  <label for="calc-days" class="field-label">Рабочих дней в неделю</label>
+                  <output class="field-value" for="calc-days" data-calc-days-out>6</output>
+                </div>
+                <input type="range" id="calc-days" name="days" min="1" max="7" step="1" value="6"
+                  class="range" data-calc-days>
+              </div>
+
+              <div class="field">
+                <div class="field-row">
+                  <label for="calc-income" class="field-label">Доход за смену после комиссии сервиса</label>
+                  <output class="field-value" for="calc-income" data-calc-income-out></output>
+                </div>
+                <input type="range" id="calc-income" name="income" class="range" data-calc-income>
+              </div>
+
+              <div class="field">
+                <label for="calc-fuel" class="field-label">Топливо за смену, <span data-city-currency>сом</span></label>
+                <input type="number" id="calc-fuel" name="fuel" min="0" inputmode="numeric" class="field-input"
+                  data-calc-fuel>
+              </div>
+
+            </form>
+
+            <div class="calc-result" aria-live="polite">
+
+              <p class="calc-result-label">Остаётся вам за месяц</p>
+              <p class="calc-net" data-calc-net>—</p>
+
+              <div class="calc-bar" aria-hidden="true">
+                <span class="bar-rent" data-calc-bar-rent></span>
+                <span class="bar-fuel" data-calc-bar-fuel></span>
+                <span class="bar-net" data-calc-bar-net></span>
+              </div>
+
+              <dl class="calc-rows">
+                <div class="calc-row">
+                  <dt>Доход за месяц</dt>
+                  <dd data-calc-income-total>—</dd>
+                </div>
+                <div class="calc-row">
+                  <dt><i class="dot dot-rent"></i>Аренда за 30 дней</dt>
+                  <dd data-calc-rent>—</dd>
+                </div>
+                <div class="calc-row">
+                  <dt><i class="dot dot-fuel"></i>Топливо</dt>
+                  <dd data-calc-fuel-total>—</dd>
+                </div>
+              </dl>
+
+              <p class="calc-note">Расчёт примерный: аренда оплачивается за каждый день, в месяце 30 дней.
+                Реальный доход зависит от спроса, тарифов сервиса и вашего графика.</p>
+
+              <button type="button" class="btn btn-primary" data-calc-book>
+                <span>Арендовать эту машину</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #HOW TO START
+      -->
+
+      <section class="section get-start" id="how" aria-labelledby="how-title">
+        <div class="container">
+
+          <h2 class="h2 section-title" id="how-title">Как начать работать — 4 шага</h2>
+
+          <ol class="get-start-list">
+
+            <li class="get-start-card">
+              <span class="step-number" aria-hidden="true">1</span>
+              <div class="card-icon icon-1">
+                <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <h3 class="card-title">Оставьте заявку</h3>
+              <p class="card-text">Через форму на сайте, в WhatsApp или по телефону. В рабочее время перезвоним
+                в течение 15 минут.</p>
+              <a href="#booking" class="card-link">Оставить заявку</a>
             </li>
 
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                    <img src="./assets/images/blog-2.jpg" alt="What cars are most vulnerable" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Repair</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">What cars are most vulnerable</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
+            <li class="get-start-card">
+              <span class="step-number" aria-hidden="true">2</span>
+              <div class="card-icon icon-2">
+                <ion-icon name="id-card-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Проверка документов</h3>
+              <p class="card-text">Нужны только паспорт и водительское удостоверение. Проверка занимает около
+                часа.</p>
             </li>
 
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                    <img src="./assets/images/blog-3.jpg" alt="Statistics showed which average age" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Cars</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Statistics showed which average age</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
+            <li class="get-start-card">
+              <span class="step-number" aria-hidden="true">3</span>
+              <div class="card-icon icon-3">
+                <ion-icon name="key-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Договор и ключи</h3>
+              <p class="card-text">Подписываем договор, вы вносите залог и оплату за первые сутки — и получаете
+                машину.</p>
             </li>
 
-            <li>
-              <div class="blog-card">
-
-                <figure class="card-banner">
-
-                  <a href="#">
-                    <img src="./assets/images/blog-4.jpg" alt="What´s required when renting a car?" loading="lazy"
-                      class="w-100">
-                  </a>
-
-                  <a href="#" class="btn card-badge">Cars</a>
-
-                </figure>
-
-                <div class="card-content">
-
-                  <h3 class="h3 card-title">
-                    <a href="#">What´s required when renting a car?</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
-                  </div>
-
-                </div>
-
+            <li class="get-start-card">
+              <span class="step-number" aria-hidden="true">4</span>
+              <div class="card-icon icon-4">
+                <ion-icon name="car-sport-outline" aria-hidden="true"></ion-icon>
               </div>
+              <h3 class="card-title">Выход на линию</h3>
+              <p class="card-text">Помогаем подключиться к сервисам такси — и вы начинаете зарабатывать в тот же
+                день.</p>
             </li>
 
-            <li>
-              <div class="blog-card">
+          </ol>
 
-                <figure class="card-banner">
+        </div>
+      </section>
 
-                  <a href="#">
-                    <img src="./assets/images/blog-5.jpg" alt="New rules for handling our cars" loading="lazy"
-                      class="w-100">
+
+
+
+
+      <!--
+        - #REQUIREMENTS
+      -->
+
+      <section class="section requirements" id="requirements" aria-labelledby="req-title">
+        <div class="container">
+
+          <div class="req-grid">
+
+            <div class="req-card">
+              <h2 class="h2 section-title" id="req-title">Требования к водителю</h2>
+
+              <ul class="req-list">
+                <li>
+                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                  <span><strong>Возраст от 23 лет</strong></span>
+                </li>
+                <li>
+                  <ion-icon name="speedometer-outline" aria-hidden="true"></ion-icon>
+                  <span><strong>Стаж вождения от 3 лет</strong> — права категории B</span>
+                </li>
+                <li>
+                  <ion-icon name="ribbon-outline" aria-hidden="true"></ion-icon>
+                  <span><strong>Без лишения прав</strong> за последние 2 года</span>
+                </li>
+                <li>
+                  <ion-icon name="happy-outline" aria-hidden="true"></ion-icon>
+                  <span><strong>Опыт в такси не обязателен</strong> — всему научим</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="req-card req-card-docs">
+              <h2 class="h3 req-docs-title">Документы</h2>
+
+              <ul class="req-list">
+                <li>
+                  <ion-icon name="id-card-outline" aria-hidden="true"></ion-icon>
+                  <span>Паспорт или ID-карта гражданина Кыргызстана или Узбекистана</span>
+                </li>
+                <li>
+                  <ion-icon name="card-outline" aria-hidden="true"></ion-icon>
+                  <span>Водительское удостоверение</span>
+                </li>
+                <li>
+                  <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                  <span>Смартфон с WhatsApp или Telegram для связи</span>
+                </li>
+              </ul>
+
+              <a href="#booking" class="btn btn-primary">Подходит — оставить заявку</a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #CONTACTS
+      -->
+
+      <section class="section offices" id="contacts" aria-labelledby="offices-title">
+        <div class="container">
+
+          <h2 class="h2 section-title" id="offices-title">Наши офисы</h2>
+          <p class="section-text">Приезжайте посмотреть машины или позвоните — подберём авто под ваш график.</p>
+
+          <ul class="office-list" data-offices></ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #FAQ
+      -->
+
+      <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+
+          <h2 class="h2 section-title" id="faq-title">Частые вопросы</h2>
+
+          <div class="faq-list">
+
+            <details class="faq-item">
+              <summary>Можно ли работать в Яндекс Go и inDrive одновременно?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Да. Вы сами выбираете, в каких сервисах работать, и можете переключаться между ними. Мы поможем
+                зарегистрироваться и пройти фотоконтроль машины.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Что входит в стоимость аренды?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Страховка ОСАГО, плановое ТО, ремонт по износу и подменный автомобиль на время ремонта. Топливо,
+                мойка и штрафы оплачиваются водителем.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Какой залог и когда его возвращают?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Залог <span data-city-name-in>в вашем городе</span> — <strong data-city-deposit>—</strong>. Он
+                возвращается в день сдачи машины, если нет повреждений и долгов по аренде и штрафам.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Что делать, если случилось ДТП?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Сразу позвоните диспетчеру — он на связи круглосуточно и подскажет, что делать. Ремонт по
+                страховому случаю делает парк, на время ремонта выдаём подменную машину.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Как работает аренда с выкупом?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Вы работаете на машине и каждый день вносите платёж. Через 24–36 месяцев, после последнего
+                платежа, машина переоформляется на вас. Точные условия зависят от модели — обсудим их при
+                встрече.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Можно ли ездить за город и в другие города?
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon></summary>
+              <p>Работа разрешена в пределах города и области. Поездки в другие города и за границу — только по
+                согласованию с парком.</p>
+            </details>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+        - #BOOKING
+      -->
+
+      <section class="section booking" id="booking" aria-labelledby="booking-title">
+        <div class="container">
+
+          <div class="booking-grid">
+
+            <div class="booking-content">
+              <h2 class="h2 section-title" id="booking-title">Оставьте заявку</h2>
+
+              <p class="section-text">Заполните форму — она откроется в WhatsApp с готовым сообщением для менеджера
+                <span data-city-name-in>в вашем городе</span>. Или свяжитесь с нами напрямую:</p>
+
+              <ul class="booking-contacts">
+                <li>
+                  <a href="#" class="booking-contact" data-city-tel>
+                    <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                    <span data-city-phone-text>—</span>
                   </a>
+                </li>
+                <li>
+                  <a href="#" class="booking-contact" data-city-wa target="_blank" rel="noopener">
+                    <ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon>
+                    <span>Написать в WhatsApp</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="booking-contact" data-city-tg target="_blank" rel="noopener">
+                    <ion-icon name="paper-plane-outline" aria-hidden="true"></ion-icon>
+                    <span>Написать в Telegram</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-                  <a href="#" class="btn card-badge">Company</a>
+            <form class="booking-form" data-booking-form novalidate>
 
-                </figure>
+              <div class="field">
+                <label for="b-name" class="field-label">Ваше имя <span aria-hidden="true">*</span></label>
+                <input type="text" id="b-name" name="name" class="field-input" autocomplete="name" required
+                  minlength="2" placeholder="Например, Азамат">
+                <p class="field-error" id="b-name-error" hidden>Укажите имя</p>
+              </div>
 
-                <div class="card-content">
+              <div class="field">
+                <label for="b-phone" class="field-label">Телефон <span aria-hidden="true">*</span></label>
+                <input type="tel" id="b-phone" name="phone" class="field-input" autocomplete="tel" required
+                  inputmode="tel" data-booking-phone>
+                <p class="field-error" id="b-phone-error" hidden>Укажите номер телефона полностью</p>
+              </div>
 
-                  <h3 class="h3 card-title">
-                    <a href="#">New rules for handling our cars</a>
-                  </h3>
-
-                  <div class="card-meta">
-
-                    <div class="publish-date">
-                      <ion-icon name="time-outline"></ion-icon>
-
-                      <time datetime="2022-01-14">January 14, 2022</time>
-                    </div>
-
-                    <div class="comments">
-                      <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-
-                      <data value="114">114</data>
-                    </div>
-
+              <div class="field-group">
+                <div class="field">
+                  <label for="b-city" class="field-label">Город</label>
+                  <div class="select-wrap">
+                    <select id="b-city" name="city" class="field-input" data-city-select>
+                      <option value="osh">Ош</option>
+                      <option value="tashkent">Ташкент</option>
+                      <option value="bishkek">Бишкек</option>
+                    </select>
                   </div>
-
                 </div>
 
+                <div class="field">
+                  <label for="b-format" class="field-label">Формат</label>
+                  <div class="select-wrap">
+                    <select id="b-format" name="format" class="field-input" data-booking-format>
+                      <option value="day">Посуточно</option>
+                      <option value="week">На неделю (−5%)</option>
+                      <option value="month">На месяц (−10%)</option>
+                      <option value="buyout">С выкупом</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </li>
 
-          </ul>
+              <div class="field-group">
+                <div class="field">
+                  <label for="b-car" class="field-label">Автомобиль</label>
+                  <div class="select-wrap">
+                    <select id="b-car" name="car" class="field-input" data-booking-car></select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="b-exp" class="field-label">Стаж вождения</label>
+                  <div class="select-wrap">
+                    <select id="b-exp" name="experience" class="field-input">
+                      <option value="3–5 лет">3–5 лет</option>
+                      <option value="5–10 лет">5–10 лет</option>
+                      <option value="больше 10 лет">больше 10 лет</option>
+                      <option value="меньше 3 лет">меньше 3 лет</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="b-comment" class="field-label">Комментарий</label>
+                <textarea id="b-comment" name="comment" class="field-input" rows="3"
+                  placeholder="Когда удобно забрать машину, вопросы"></textarea>
+              </div>
+
+              <label class="checkbox">
+                <input type="checkbox" name="consent" required checked data-booking-consent>
+                <span>Согласен на обработку персональных данных</span>
+              </label>
+              <p class="field-error" id="b-consent-error" hidden>Нужно согласие на обработку данных</p>
+
+              <button type="submit" class="btn btn-primary btn-lg">
+                <ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon>
+                <span>Отправить заявку</span>
+              </button>
+
+              <div class="form-status" data-booking-status role="status" aria-live="polite" hidden></div>
+
+            </form>
+
+          </div>
 
         </div>
       </section>
@@ -881,71 +987,48 @@
 
 
 
-  <!-- 
+  <!--
     - #FOOTER
   -->
 
   <footer class="footer">
+    <div class="checker" aria-hidden="true"></div>
+
     <div class="container">
 
       <div class="footer-top">
 
         <div class="footer-brand">
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" alt="Ridex logo">
+          <a href="#home" class="logo" aria-label="Ridex Taxi — на главную">
+            <img src="./assets/images/logo-icon.svg" alt="" width="36" height="36">
+            <span class="logo-text">Ridex<span>taxi</span></span>
           </a>
 
           <p class="footer-text">
-            Search for cheap rental cars in New York. With a diverse fleet of 19,000 vehicles, Waydex offers its
-            consumers an
-            attractive and fun selection.
+            Аренда автомобилей для работы в такси в Оше, Ташкенте и Бишкеке. Посуточно, на месяц или с выкупом.
           </p>
         </div>
 
         <ul class="footer-list">
 
           <li>
-            <p class="footer-list-title">Company</p>
+            <p class="footer-list-title">Водителям</p>
           </li>
 
           <li>
-            <a href="#" class="footer-link">About us</a>
+            <a href="#fleet" class="footer-link">Автопарк</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Pricing plans</a>
+            <a href="#tariffs" class="footer-link">Форматы аренды</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Our blog</a>
+            <a href="#calculator" class="footer-link">Калькулятор дохода</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Contacts</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Support</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Help center</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Ask a question</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Privacy policy</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Terms & conditions</a>
+            <a href="#requirements" class="footer-link">Требования</a>
           </li>
 
         </ul>
@@ -953,39 +1036,31 @@
         <ul class="footer-list">
 
           <li>
-            <p class="footer-list-title">Neighborhoods in New York</p>
+            <p class="footer-list-title">Помощь</p>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Manhattan</a>
+            <a href="#how" class="footer-link">Как начать</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Central New York City</a>
+            <a href="#faq" class="footer-link">Частые вопросы</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Upper East Side</a>
+            <a href="#booking" class="footer-link">Оставить заявку</a>
           </li>
 
           <li>
-            <a href="#" class="footer-link">Queens</a>
+            <a href="#contacts" class="footer-link">Контакты</a>
           </li>
 
-          <li>
-            <a href="#" class="footer-link">Theater District</a>
-          </li>
+        </ul>
+
+        <ul class="footer-list footer-cities" data-footer-cities>
 
           <li>
-            <a href="#" class="footer-link">Midtown</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">SoHo</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Chelsea</a>
+            <p class="footer-list-title">Города</p>
           </li>
 
         </ul>
@@ -997,45 +1072,33 @@
         <ul class="social-list">
 
           <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <a href="#" class="social-link" data-city-wa target="_blank" rel="noopener" aria-label="WhatsApp">
+              <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
           </li>
 
           <li>
-            <a href="#" class="social-link">
+            <a href="#" class="social-link" data-city-tg target="_blank" rel="noopener" aria-label="Telegram">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link" aria-label="Instagram">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
 
           <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-skype"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="mail-outline"></ion-icon>
+            <a href="#" class="social-link" data-city-tel aria-label="Позвонить">
+              <ion-icon name="call-outline"></ion-icon>
             </a>
           </li>
 
         </ul>
 
         <p class="copyright">
-          &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+          &copy; <span data-year>2026</span> Ridex Taxi. Все права защищены.
         </p>
 
       </div>
@@ -1047,12 +1110,24 @@
 
 
 
-  <!-- 
+  <!--
+    - floating WhatsApp button
+  -->
+  <a href="#" class="float-wa" data-city-wa target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+    <ion-icon name="logo-whatsapp"></ion-icon>
+  </a>
+
+
+
+
+
+  <!--
     - custom js link
   -->
+  <script src="./assets/js/data.js"></script>
   <script src="./assets/js/script.js"></script>
 
-  <!-- 
+  <!--
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
